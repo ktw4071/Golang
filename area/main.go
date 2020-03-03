@@ -16,8 +16,8 @@ type square struct {
 }
 
 func main() {
-	t := triangle{10, 5}
-	s := square{20}
+	t := triangle{11.1, 5.1}
+	s := square{20.3}
 
 	printArea(t)
 	printArea(s)
