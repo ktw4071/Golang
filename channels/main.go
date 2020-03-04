@@ -20,24 +20,18 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	// main routine receives and wakes up <-c
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-
-	// extra channel will be waiting to receive, program hangs
-	fmt.Println(<-c)
+	for {
+		go checkLink(<-c, c)
+	}
 }
 
 func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link, "might be down")
-		c <- "Might be down I think"
+		c <- link
 		return
 	}
 	fmt.Println(link, "is up!")
-	c <- "It's up!"
+	c <- link
 }
