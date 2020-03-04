@@ -20,6 +20,11 @@ func main() {
 		go checkLink(link, c)
 	}
 
+	// main routine receives and wakes up <-c
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
 	fmt.Println(<-c)
 }
 
