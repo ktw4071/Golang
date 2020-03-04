@@ -20,15 +20,9 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	// main routine receives and wakes up <-c
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-
-	// extra channel will be waiting to receive, program hangs
-	fmt.Println(<-c)
+	for l := range c {
+		go checkLink(l, c)
+	}
 }
 
 func checkLink(link string, c chan string) {
