@@ -26,6 +26,9 @@ func main() {
 	fmt.Println(<-c)
 	fmt.Println(<-c)
 	fmt.Println(<-c)
+
+	// extra channel will be waiting to receive, program hangs
+	fmt.Println(<-c)
 }
 
 func checkLink(link string, c chan string) {
